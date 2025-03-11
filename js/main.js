@@ -7,18 +7,11 @@ const loaCategories = () => {
 function displayCategories(data) {
     const categoryContainar = document.getElementById("category-containar");
     for (const cat of data) {
-        console.log(cat);
-
         const categoryDiv = document.createElement("div");
         categoryDiv.innerHTML = `
-
-            <button class="btn btn-sm">${cat.category}</button>
-
+            <button class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">${cat.category}</button>
         `
-
         categoryContainar.appendChild(categoryDiv);
-
-
     }
 }
 
