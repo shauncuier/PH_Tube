@@ -12,7 +12,7 @@ function loadVideos() {
         .then((response) => response.json())
         .then((data) => displayVideos(data.videos));
 }
-
+// loadCategoryVideos
 const loadCategoryVideos = (id) => {
     const url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`;
     fetch(url)
@@ -35,11 +35,24 @@ function displayCategories(data) {
 // Display videos
 const displayVideos = (videos) => {
     const videoContainar = document.getElementById("video-containar");
+
+    // Clear previous data
     videoContainar.innerHTML = "";
+
+            if (videos.length === 0) {
+                videoContainar.innerHTML = `
+                    <div class="col-span-full flex justify-center items-center flex-col gap-15 py-20">
+                    <img class="w-32" src="./image/Icon.png" alt="">
+                    <h2 class="text-center text-3xl font-bold">Oops!! Sorry, There is no content here</h2>
+                </div>
+                `;
+                return;
+            }
+
     videos.forEach((video) => {
         // console.log(video);
-
         const videoCard = document.createElement("div");
+
         videoCard.innerHTML = `
             
                 <div class="card bg-base-100">
@@ -81,3 +94,6 @@ const displayVideos = (videos) => {
 
 // Function call
 loaCategories();
+
+// Load videos
+loadVideos();
