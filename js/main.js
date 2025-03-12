@@ -14,8 +14,7 @@ function loadVideos() {
 }
 
 const loadCategoryVideos = (id) => {
-
-    const url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`
+    const url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`;
     fetch(url)
         .then((response) => response.json())
         .then((data) => displayVideos(data.category));
@@ -45,7 +44,8 @@ const displayVideos = (videos) => {
             
                 <div class="card bg-base-100">
                     <figure class="relative">
-                        <img class="h-[250px] w-full object-cover" src="${video.thumbnail}" alt="" />
+                        <img class="h-[250px] w-full object-cover" src="${video.thumbnail
+            }" alt="" />
                         <span class="absolute bottom-2 right-2 bg-black text-white rounded py-1 px-2 text-sm">3hrs 56
                             min ago</span>
                     </figure>
@@ -54,16 +54,22 @@ const displayVideos = (videos) => {
                             <div class="avatar">
                                 <div class="ring-primary ring-offset-base-100 w-10 rounded-full ring ring-offset-2">
                                     <img
-                                        src="${video.authors[0].profile_picture}" />
+                                        src="${video.authors[0].profile_picture
+            }" />
                                 </div>
                             </div>
                         </div>
                         <div>
                             <h2 class="text-base font-bold">${video.title}</h2>
-                            <p class="text-gray-400 text-sm flex gap-1 items-center">${video.authors[0].profile_name}
-                                <img class="h-5 w-5" src="https://img.icons8.com/?size=48&id=98A4yZTt9abw&format=png" alt="">
+                            <p class="text-gray-400 text-sm flex gap-1 items-center">${video.authors[0].profile_name
+            }
+                ${video.authors[0].verified == true
+                ? `<img class="h-5 w-5" src="https://img.icons8.com/?size=48&id=98A4yZTt9abw&format=png" alt="">`
+                : ``
+            }  
                             </p>
-                            <p class="text-gray-400 text-sm">${video.others.views} Views</p>
+                            <p class="text-gray-400 text-sm">${video.others.views
+            } Views</p>
                         </div>
                     </div>
                 </div>
@@ -75,4 +81,3 @@ const displayVideos = (videos) => {
 
 // Function call
 loaCategories();
-
